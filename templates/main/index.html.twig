@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+    <section class="pb-5 pt-5">
+        <div class="block text-center">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-10">
+                        <h4 class="mt-5 mb-5">
+                            Wybierz datę aby sprawdzić porównanie kursu walut
+                        </h4>
+                        <form class="form-inline d-flex justify-content-center h-25">
+                            <input class="form-control  form-control mb-3"
+                                   placeholder="email address">
+                            <button
+                                    class="btn btn-primary w-100 btn-round mb-3 btn-rised">Sprawdź kurs</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="block block-bordered text-center">
+            <div class="container-fluid">
+                <blockquote class="pull-quote m-5">
+                    <p><strong>
+                            Tutaj tabela
+                        </strong>
+                    </p>
+                </blockquote>
+            </div>
+        </div>
+    </section>
+{% endblock %}
