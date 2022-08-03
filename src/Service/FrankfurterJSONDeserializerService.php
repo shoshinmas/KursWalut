@@ -16,10 +16,6 @@ class FrankfurterJSONDeserializerService
     {
     }
 
-    public function JSONDeserializeLatest()
-    {
-    }
-
     public function JSONDeserializeDate(Datetime $datetime)
     {
     }

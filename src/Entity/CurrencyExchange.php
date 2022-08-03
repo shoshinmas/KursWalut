@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use App\Repository\KursWalutRepository;
+use App\Repository\CurrencyExchangeRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=KursWalutRepository::class)
+ * @ORM\Entity(repositoryClass=CurrencyExchangeRepository::class)
  */
-class KursWalut
+class CurrencyExchange
 {
     /**
      * @ORM\Id

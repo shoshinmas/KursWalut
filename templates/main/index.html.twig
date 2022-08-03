@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MainController!{% endblock %}
+{% block title %}Kurs Walut!{% endblock %}
 
 {% block body %}
     <section class="pb-5 pt-5">
@@ -11,12 +11,8 @@
                         <h4 class="mt-5 mb-5">
                             Wybierz datę aby sprawdzić porównanie kursu walut
                         </h4>
-                        <form class="form-inline d-flex justify-content-center h-25">
-                            <input class="form-control  form-control mb-3"
-                                   placeholder="email address">
-                            <button
-                                    class="btn btn-primary w-100 btn-round mb-3 btn-rised">Sprawdź kurs</button>
-                        </form>
+                        {{ form.start }}
+                        {{ form.end }}
                     </div>
                 </div>
             </div>

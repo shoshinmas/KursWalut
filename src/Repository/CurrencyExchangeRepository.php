@@ -4,26 +4,26 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Entity\KursWalut;
+use App\Entity\CurrencyExchange;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<KursWalut>
+ * @extends ServiceEntityRepository<CurrencyExchange>
  *
- * @method KursWalut|null find($id, $lockMode = null, $lockVersion = null)
- * @method KursWalut|null findOneBy(array $criteria, array $orderBy = null)
- * @method KursWalut[]    findAll()
- * @method KursWalut[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method CurrencyExchange|null find($id, $lockMode = null, $lockVersion = null)
+ * @method CurrencyExchange|null findOneBy(array $criteria, array $orderBy = null)
+ * @method CurrencyExchange[]    findAll()
+ * @method CurrencyExchange[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class KursWalutRepository extends ServiceEntityRepository
+class CurrencyExchangeRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, KursWalut::class);
+        parent::__construct($registry, CurrencyExchange::class);
     }
 
-    public function add(KursWalut $entity, bool $flush = false): void
+    public function add(CurrencyExchange $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -32,7 +32,7 @@ class KursWalutRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(KursWalut $entity, bool $flush = false): void
+    public function remove(CurrencyExchange $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -42,7 +42,7 @@ class KursWalutRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return KursWalut[] Returns an array of KursWalut objects
+//     * @return CurrencyExchange[] Returns an array of CurrencyExchange objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -56,7 +56,7 @@ class KursWalutRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?KursWalut
+//    public function findOneBySomeField($value): ?CurrencyExchange
 //    {
 //        return $this->createQueryBuilder('k')
 //            ->andWhere('k.exampleField = :val')
