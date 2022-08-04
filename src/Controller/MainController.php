@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 
-use App\Model\CurrencyRate;
 use App\Service\FrankfurterJSONDeserializerService;
-use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,8 +13,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends AbstractController
 {
-    private DateTime $dateOnDate;
-
     public function __construct(
     )
     {
