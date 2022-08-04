@@ -13,8 +13,8 @@ use Symfony\Component\Serializer\Serializer;
 
 class FrankfurterJSONDeserializerService
 {
-    private const BASEURL = "https://api.frankfurter.app/";
-    private const CURRENCIES = "?base=PLN&symbols=EUR,USD,GBP,CZK";
+    private const BASEURL = 'https://api.frankfurter.app/';
+    private const CURRENCIES = '?base=PLN&symbols=EUR,USD,GBP,CZK';
 
     public function JSONDeserializeDate(string $datetime): FrankfurterObj
     {
@@ -22,11 +22,9 @@ class FrankfurterJSONDeserializerService
         $normalizers = [new ObjectNormalizer()];
         $serializer = new Serializer($normalizers, $encoders);
 
-        $frankfurterObj = (string)(self::BASEURL . $datetime . self::CURRENCIES);
-        $serObject = urldecode($frankfurterObj);
-        $returnValue = json_decode($serObject, true);
-        dd($returnValue);
-        return  $serializer->deserialize($returnValue, FrankfurterObj::class, 'json');
+        $frankfurterUrl = (self::BASEURL . $datetime . self::CURRENCIES);
+        $json = file_get_contents($frankfurterUrl);
+        return  $serializer->deserialize($json, FrankfurterObj::class, 'json');
     }
 
 

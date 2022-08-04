@@ -14,7 +14,7 @@
                         <form class="form-inline d-flex justify-content-center h-25">
                             <input class="form-control  form-control mb-3 mx-1" name="givenDate"
                                    placeholder="YYYY-MM-DD">
-                            <a href="{{ path('app_table'), }}"><button
+                            <a href="{{ path('app_main')}}"><button
                                         class="btn btn-primary w-100 btn-round mb-3 btn-rised">Sprawdź kurs</button></a>
                         </form>
                     </div>
@@ -24,10 +24,26 @@
         <div class="block block-bordered text-center">
             <div class="container-fluid">
                 <blockquote class="pull-quote m-5">
-                    <p><strong>
-                            Tutaj tabela
-                        </strong>
-                    </p>
+                    <table class="table ">
+                        <thead>
+                        <tr>
+                            <th scope="col">Waluta</th>
+                            <th scope="col">Kurs z dzisiaj</th>
+                            <th scope="col">Kurs z {{ givenDate }}</th>
+                            <th scope="col">Zmiana procentowa</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for currencyOnDay in currencyOnDay %}
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Sit</td>
+                            <td>Amet</td>
+                            <td>Consectetur</td>
+                        </tr>
+                        </tbody>
+
+                    </table>
                 </blockquote>
             </div>
         </div>

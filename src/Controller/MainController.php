@@ -31,15 +31,10 @@ class MainController extends AbstractController
             $givenDate = $request->get('givenDate');
 
             if($givenDate) {
-            $ratesForToday = $jsonService->JSONDeserializeDate($today);
-            $ratesOnDay = $jsonService->JSONDeserializeDate($givenDate);
-
-            $currencyToday = new CurrencyRate();
-            $currencyOnDate = new CurrencyRate();
-
             return $this->render('main/table.html.twig', [
-                'currencyToday' => $currencyToday,
-                'currencyOnDate' => $currencyOnDate]);
+                'givenDate' => $givenDate,
+                'currencyToday' => $jsonService->JSONDeserializeDate($today)->getRates(),
+                'currencyOnDate' => $jsonService->JSONDeserializeDate($givenDate)->getRates()]);
             }
         return $this->render('main/index.html.twig');
     }
