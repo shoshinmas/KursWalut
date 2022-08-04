@@ -22,8 +22,11 @@ class FrankfurterJSONDeserializerService
         $normalizers = [new ObjectNormalizer()];
         $serializer = new Serializer($normalizers, $encoders);
 
-        $frankfurterObj = self::BASEURL . $datetime . self::CURRENCIES;
-        return  $serializer->deserialize($frankfurterObj, FrankfurterObj::class, 'json');
+        $frankfurterObj = (string)(self::BASEURL . $datetime . self::CURRENCIES);
+        $serObject = urldecode($frankfurterObj);
+        $returnValue = json_decode($serObject, true);
+        dd($returnValue);
+        return  $serializer->deserialize($returnValue, FrankfurterObj::class, 'json');
     }
 
 
