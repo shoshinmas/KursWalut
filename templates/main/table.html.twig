@@ -34,12 +34,29 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {% for currencyOnDay in currencyOnDay %}
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Sit</td>
-                            <td>Amet</td>
-                            <td>Consectetur</td>
+                            <td>EUR</td>
+                            <td>{{ currenciesToday.EUR }}</td>
+                            <td>{{ currenciesOnDate.EUR }}</td>
+                            <td>{{ 100-((currenciesToday.EUR / currenciesOnDate.EUR) * 100) }} %</td>
+                        </tr>
+                        <tr>
+                            <td>USD</td>
+                            <td>{{ currenciesToday.USD }}</td>
+                            <td>{{ currenciesOnDate.USD }}</td>
+                            <td>{{ 100-((currenciesToday.USD / currenciesOnDate.USD) * 100) }} %</td>
+                        </tr>
+                        <tr>
+                            <td>GBP</td>
+                            <td>{{ currenciesToday.GBP }}</td>
+                            <td>{{ currenciesOnDate.GBP }}</td>
+                            <td>{{ 100-((currenciesToday.GBP / currenciesOnDate.GBP) * 100) }} %</td>
+                        </tr>
+                        <tr>
+                            <td>CZK</td>
+                            <td>{{ currenciesToday.CZK }}</td>
+                            <td>{{ currenciesOnDate.CZK }}</td>
+                            <td>{{ 100-((currenciesToday.CZK / currenciesOnDate.CZK) * 100) }} %</td>
                         </tr>
                         </tbody>
 

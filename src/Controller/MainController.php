@@ -33,8 +33,8 @@ class MainController extends AbstractController
             if($givenDate) {
             return $this->render('main/table.html.twig', [
                 'givenDate' => $givenDate,
-                'currencyToday' => $jsonService->JSONDeserializeDate($today)->getRates(),
-                'currencyOnDate' => $jsonService->JSONDeserializeDate($givenDate)->getRates()]);
+                'currenciesToday' => $jsonService->JSONDeserializeDate($today)->getRates(),
+                'currenciesOnDate' => $jsonService->JSONDeserializeDate($givenDate)->getRates()]);
             }
         return $this->render('main/index.html.twig');
     }
