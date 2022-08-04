@@ -4,55 +4,43 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Entity\CurrencyExchange;
-use App\Form\FormType;
+
+use App\Model\CurrencyRate;
+use App\Service\FrankfurterJSONDeserializerService;
 use DateTime;
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\Exception\ORMException;
-use Doctrine\ORM\OptimisticLockException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\CurrencyExchangeRepository;
 
 class MainController extends AbstractController
 {
     private DateTime $dateOnDate;
 
     public function __construct(
-        private readonly CurrencyExchangeRepository $currencyExchangeRepository,
     )
     {
     }
 
     /**
-     * @throws OptimisticLockException
-     * @throws ORMException
+     * @Route("/", name="app_main")
      */
-    #[Route('/', name: 'app_main')]
-    public function index(EntityManager $entityManager, Request $request): Response
+    public function index(Request $request, FrankfurterJSONDeserializerService $jsonService): Response
     {
-        $form = $this->createForm(FormType::class);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $currencyExchange = new CurrencyExchange();
-            $dateOnDate = $form->getData();
-            //$currencyExchange->set();
-            $entityManager->persist($currencyExchange);
-            $entityManager->flush();
-            return $this->redirectToRoute('app_table');
-        }
-        return $this->render('main/table.html.twig', [
-            'comment_form' => $form->createView()
-        ]);
-    }
+            $today = Date('Y-m-d');
+            $givenDate = $request->get('givenDate');
 
-    #[Route('/{dateOnDate}', name: 'app_table')]
-    public function createTable(): Response
-    {
-        return $this->render('main/table.html.twig', [
-            'rates' => $this->currencyExchangeRepository->findByDate([], ['rateOnDate' => 'DESC']),
-        ]);
+            if($givenDate) {
+            $ratesForToday = $jsonService->JSONDeserializeDate($today);
+            $ratesOnDay = $jsonService->JSONDeserializeDate($givenDate);
+
+            $currencyToday = new CurrencyRate();
+            $currencyOnDate = new CurrencyRate();
+
+            return $this->render('main/table.html.twig', [
+                'currencyToday' => $currencyToday,
+                'currencyOnDate' => $currencyOnDate]);
+            }
+        return $this->render('main/index.html.twig');
     }
 }
